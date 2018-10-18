@@ -1,20 +1,41 @@
 import core.Constant;
+import task_implementation.MacResourceContext;
 import task_implementation.WindowsResourceContext;
 import task_interface.IResourceContext;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.math.BigInteger;
 
 public class ResourceContext {
-    private WindowsResourceContext windowsResourceContext;
-    private ResourceContext() {
+    private IResourceContext resourceContext;
+
+    public ResourceContext() {
+        resourceContext = GetResourceContext();
     }
 
-    public static double TotalMemory() {
-        return 1.22;
+    public BigInteger TotalMemory() {
+        return resourceContext.TotalMemory();
+    }
+
+    public BigInteger FreeMemory() {
+        return resourceContext.FreeMemory();
+    }
+
+
+    private  IResourceContext GetResourceContext() {
+        if(Constant.IS_WINDOWS) {
+            if(this.resourceContext == null) {
+                return new WindowsResourceContext();
+            }
+            return this.resourceContext;
+        }
+        else if(Constant.IS_MAC) {
+            if(this.resourceContext == null) {
+                return new MacResourceContext();
+            }
+            return this.resourceContext;
+        }
+        else{
+            return null;
+        }
     }
 }

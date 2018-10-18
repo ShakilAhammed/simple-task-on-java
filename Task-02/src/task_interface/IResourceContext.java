@@ -1,6 +1,8 @@
 package task_interface;
 
+import java.math.BigInteger;
+
 public interface IResourceContext {
-    double FreeMemory();
-    double TotalMemory();
+    BigInteger FreeMemory();
+    BigInteger TotalMemory();
 }
