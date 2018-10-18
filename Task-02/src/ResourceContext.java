@@ -1,4 +1,7 @@
 import core.Constant;
+import task_implementation.WindowsResourceContext;
+import task_interface.IResourceContext;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,43 +10,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ResourceContext {
-    private BufferedReader r;
-    private ArrayList<String> line;
-
-    public ResourceContext() {
-        line = new ArrayList<>();
+    private WindowsResourceContext windowsResourceContext;
+    private ResourceContext() {
     }
-    
-    public String GetTotalMemory() {
-        if(Constant.IS_WINDOWS) {
-            ProcessBuilder builder = new ProcessBuilder(
-            "cmd.exe", "/c", Constant.TOTAL_MEMORY_CMD);
-        builder.redirectErrorStream(true);
-        Process p;
-            try {
-                p = builder.start();
-                r = new BufferedReader(new InputStreamReader(p.getInputStream()));
-                
-            } catch (IOException ex) {
-                Logger.getLogger(ResourceContext.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-        
-        
-        while (true) {
-                try {
-                    String data = r.readLine();
-                    line.add(data); 
-                    if (data == null) { break; }
-                } catch (IOException ex) {
-                    Logger.getLogger(ResourceContext.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        }
 
-            return "Total Memopry : " + line.get(2);
-        }
-        else{
-            return "null";
-        }
+    public static double TotalMemory() {
+        return 1.22;
     }
 }
