@@ -34,5 +34,4 @@ public class WindowsResourceContext implements IResourceContext {
         return result;
     }
 
-
 }

@@ -25,7 +25,9 @@ public class Constant {
             SYSTEM_INFORMATION_CMD = "system_profiler SPHardwareDataType";
         }
         else{
-
+            TOTAL_PHYSICAL_MEMORY_CMD = "cat /proc/meminfo | grep MemTotal: | awk '{print $2}'";
+            TOTAL_FREE_PHYSICAL_MEMORY_CMD = "cat /proc/meminfo | grep MemFree: | awk '{print $2}'";
+            SYSTEM_INFORMATION_CMD = "lscpu";
         }
     }
 
