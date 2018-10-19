@@ -4,6 +4,7 @@ import task_implementation.WindowsResourceContext;
 import task_interface.IResourceContext;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 public class ResourceContext {
     private IResourceContext resourceContext;
@@ -18,6 +19,10 @@ public class ResourceContext {
 
     public BigInteger FreePhysicalMemory() {
         return resourceContext.FreePhysicalMemory();
+    }
+
+    public ArrayList<String> GetSystemInformation() {
+        return resourceContext.GetSystemInformation();
     }
 
 

@@ -3,6 +3,7 @@ package task_implementation;
 import task_interface.IResourceContext;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 public class MacResourceContext implements IResourceContext {
     @Override
@@ -12,6 +13,11 @@ public class MacResourceContext implements IResourceContext {
 
     @Override
     public BigInteger TotalPhysicalMemory() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> GetSystemInformation() {
         return null;
     }
 }

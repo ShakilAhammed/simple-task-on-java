@@ -29,7 +29,8 @@ public class WindowsResourceContext implements IResourceContext {
 
     @Override
     public ArrayList<String> GetSystemInformation() {
-        result =
+        result = wce.RunCommand(Constant.SYSTEM_INFORMATION_CMD);
+        return result;
     }
 
 

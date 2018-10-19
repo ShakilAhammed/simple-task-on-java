@@ -11,6 +11,12 @@ public class Constant {
 
     public final static String TOTAL_FREE_MEMORY_CMD = GetTotalFreePhysicalMemoryCmd();
 
+    public final static String SYSTEM_INFORMATION_CMD = GetSystemInformationCmd();
+
+    private static String GetSystemInformationCmd() {
+        return IS_WINDOWS?"systeminfo" : "";
+    }
+
     private static String GetTotalFreePhysicalMemoryCmd() {
         return IS_WINDOWS? "wmic OS get FreePhysicalMemory" : "top -l 1 | grep PhysMem: | awk '{print $6}'";
     }
