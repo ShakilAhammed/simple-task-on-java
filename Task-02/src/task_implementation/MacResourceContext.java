@@ -17,7 +17,7 @@ public class MacResourceContext implements IResourceContext {
     @Override
     public BigInteger FreePhysicalMemory() {
         result = ce.RunCommand("/bin/sh", "-c", Constant.getTotalFreePhysicalMemoryCmd());
-        return new BigInteger(result.get(1git).trim());
+        return new BigInteger(result.get(1).trim());
     }
 
     @Override
