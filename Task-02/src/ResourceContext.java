@@ -1,4 +1,5 @@
 import core.Constant;
+import task_implementation.LinuxResourceContext;
 import task_implementation.MacResourceContext;
 import task_implementation.WindowsResourceContext;
 import task_interface.IResourceContext;
@@ -40,7 +41,10 @@ public class ResourceContext {
             return this.resourceContext;
         }
         else{
-            return null;
+            if(this.resourceContext == null) {
+                return new LinuxResourceContext();
+            }
+            return this.resourceContext;
         }
     }
 }
