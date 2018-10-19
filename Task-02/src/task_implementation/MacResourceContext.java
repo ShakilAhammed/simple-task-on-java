@@ -12,7 +12,7 @@ public class MacResourceContext implements IResourceContext {
 
     public MacResourceContext() {
         result = new ArrayList<>();
-        Constant.SetUp();
+        Constant.SetUpConstant();
     }
     @Override
     public BigInteger FreePhysicalMemory() {
