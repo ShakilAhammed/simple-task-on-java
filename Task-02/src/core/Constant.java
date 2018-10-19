@@ -7,21 +7,37 @@ public class Constant {
 
     public final static boolean IS_MAC = OS_NAME.toLowerCase().contains("mac");
 
-    public final static String TOTAL_MEMORY_CMD = GetTotalPhysicalMemoryCmd();
+    private static String TOTAL_PHYSICAL_MEMORY_CMD;
 
-    public final static String TOTAL_FREE_MEMORY_CMD = GetTotalFreePhysicalMemoryCmd();
+    private static String TOTAL_FREE_PHYSICAL_MEMORY_CMD;
 
-    public final static String SYSTEM_INFORMATION_CMD = GetSystemInformationCmd();
+    private static String SYSTEM_INFORMATION_CMD;
 
-    private static String GetSystemInformationCmd() {
-        return IS_WINDOWS?"systeminfo" : "";
+    public static void SetUpConstant() {
+        if(IS_WINDOWS) {
+            TOTAL_PHYSICAL_MEMORY_CMD = "wmic ComputerSystem get TotalPhysicalMemory";
+            TOTAL_FREE_PHYSICAL_MEMORY_CMD = "wmic OS get FreePhysicalMemory";
+            SYSTEM_INFORMATION_CMD = "systeminfo";
+        }
+        else if(IS_MAC) {
+            TOTAL_PHYSICAL_MEMORY_CMD = "sysctl -a | grep '^hw.memsize' | awk '{print $2}'";
+            TOTAL_FREE_PHYSICAL_MEMORY_CMD = "top -l 1 | grep PhysMem: | awk '{print $6}'";
+            SYSTEM_INFORMATION_CMD = "system_profiler SPHardwareDataType";
+        }
+        else{
+
+        }
     }
 
-    private static String GetTotalFreePhysicalMemoryCmd() {
-        return IS_WINDOWS? "wmic OS get FreePhysicalMemory" : "top -l 1 | grep PhysMem: | awk '{print $6}'";
+    public static String getTotalPhysicalMemoryCmd() {
+        return TOTAL_PHYSICAL_MEMORY_CMD;
     }
 
-    private static String GetTotalPhysicalMemoryCmd() {
-        return IS_WINDOWS? "wmic ComputerSystem get TotalPhysicalMemory" : "sysctl -a | grep '^hw.memsize' | awk '{print $2}'";
+    public static String getTotalFreePhysicalMemoryCmd() {
+        return TOTAL_FREE_PHYSICAL_MEMORY_CMD;
+    }
+
+    public static String getSystemInformationCmd() {
+        return SYSTEM_INFORMATION_CMD;
     }
 }

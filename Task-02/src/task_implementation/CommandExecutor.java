@@ -1,6 +1,5 @@
 package task_implementation;
 
-import core.Constant;
 import task_interface.ICommandExecutor;
 
 import java.io.BufferedReader;
@@ -10,20 +9,18 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class WindowsCommandExecutor implements ICommandExecutor {
-
+public class CommandExecutor implements ICommandExecutor {
     private BufferedReader r;
     private ArrayList<String> result;
 
-    public WindowsCommandExecutor() {
+    public CommandExecutor() {
         result = new ArrayList<>();
     }
 
     @Override
-    public ArrayList<String> RunCommand(String command) {
-        result.clear();
+    public ArrayList<String> RunCommand(String commandPath,String instruction,  String command) {
         ProcessBuilder builder = new ProcessBuilder(
-                "cmd.exe", "/c", command);
+                commandPath, instruction, command);
         builder.redirectErrorStream(true);
         Process p;
         try {
