@@ -18,18 +18,21 @@ public class WindowsResourceContext implements IResourceContext {
 
     @Override
     public BigInteger FreePhysicalMemory() {
+        result.clear();
         result = ce.RunCommand("cmd.exe","/c", Constant.getTotalFreePhysicalMemoryCmd());
         return new BigInteger(result.get(2).trim());
     }
 
     @Override
     public BigInteger TotalPhysicalMemory() {
+        result.clear();
         result = ce.RunCommand("cmd.exe","/c", Constant.getTotalPhysicalMemoryCmd());
         return new BigInteger(result.get(2).trim());
     }
 
     @Override
     public ArrayList<String> GetSystemInformation() {
+        result.clear();
         result = ce.RunCommand("cmd.exe","/c", Constant.getSystemInformationCmd());
         return result;
     }

@@ -16,18 +16,21 @@ public class MacResourceContext implements IResourceContext {
     }
     @Override
     public BigInteger FreePhysicalMemory() {
+        result.clear();
         result = ce.RunCommand("/bin/sh", "-c", Constant.getTotalFreePhysicalMemoryCmd());
         return new BigInteger(result.get(0).trim());
     }
 
     @Override
     public BigInteger TotalPhysicalMemory() {
+        result.clear();
         result = ce.RunCommand("/bin/sh", "-c", Constant.getTotalPhysicalMemoryCmd());
         return new BigInteger(result.get(0).trim());
     }
 
     @Override
     public ArrayList<String> GetSystemInformation() {
+        result.clear();
         result = ce.RunCommand("/bin/sh", "-c", Constant.getSystemInformationCmd());
         return result;
     }
