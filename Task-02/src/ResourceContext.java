@@ -12,12 +12,12 @@ public class ResourceContext {
         resourceContext = GetResourceContext();
     }
 
-    public BigInteger TotalMemory() {
-        return resourceContext.TotalMemory();
+    public BigInteger TotalPhysicalMemory() {
+        return resourceContext.TotalPhysicalMemory();
     }
 
-    public BigInteger FreeMemory() {
-        return resourceContext.FreeMemory();
+    public BigInteger FreePhysicalMemory() {
+        return resourceContext.FreePhysicalMemory();
     }
 
 

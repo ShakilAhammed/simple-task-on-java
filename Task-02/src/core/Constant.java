@@ -7,15 +7,15 @@ public class Constant {
 
     public final static boolean IS_MAC = OS_NAME.toLowerCase().contains("mac");
 
-    public final static String TOTAL_MEMORY_CMD = GetTotalMemoryCmd();
+    public final static String TOTAL_MEMORY_CMD = GetTotalPhysicalMemoryCmd();
 
-    public final static String TOTAL_FREE_MEMORY_CMD = GetTotalFreeMemoryCmd();
+    public final static String TOTAL_FREE_MEMORY_CMD = GetTotalFreePhysicalMemoryCmd();
 
-    private static String GetTotalFreeMemoryCmd() {
+    private static String GetTotalFreePhysicalMemoryCmd() {
         return IS_WINDOWS? "wmic OS get FreePhysicalMemory" : "top -l 1 | grep PhysMem: | awk '{print $6}'";
     }
 
-    private static String GetTotalMemoryCmd() {
+    private static String GetTotalPhysicalMemoryCmd() {
         return IS_WINDOWS? "wmic ComputerSystem get TotalPhysicalMemory" : "sysctl -a | grep '^hw.memsize' | awk '{print $2}'";
     }
 }

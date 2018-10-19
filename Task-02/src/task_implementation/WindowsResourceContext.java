@@ -12,18 +12,25 @@ public class WindowsResourceContext implements IResourceContext {
     private ArrayList<String> result;
 
     public WindowsResourceContext() {
-        result = new ArrayList<String>();
+        result = new ArrayList<>();
     }
 
     @Override
-    public BigInteger FreeMemory() {
+    public BigInteger FreePhysicalMemory() {
         result = wce.RunCommand(Constant.TOTAL_FREE_MEMORY_CMD);
         return new BigInteger(result.get(2).trim());
     }
 
     @Override
-    public BigInteger TotalMemory() {
+    public BigInteger TotalPhysicalMemory() {
         result = wce.RunCommand(Constant.TOTAL_MEMORY_CMD);
         return new BigInteger(result.get(2).trim());
     }
+
+    @Override
+    public ArrayList<String> GetSystemInformation() {
+        result =
+    }
+
+
 }

@@ -21,8 +21,9 @@ public class WindowsCommandExecutor implements ICommandExecutor {
 
     @Override
     public ArrayList<String> RunCommand(String command) {
+        result.clear();
         ProcessBuilder builder = new ProcessBuilder(
-                "cmd.exe", "/c", Constant.TOTAL_MEMORY_CMD);
+                "cmd.exe", "/c", command);
         builder.redirectErrorStream(true);
         Process p;
         try {

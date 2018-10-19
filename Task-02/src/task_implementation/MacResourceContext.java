@@ -6,12 +6,12 @@ import java.math.BigInteger;
 
 public class MacResourceContext implements IResourceContext {
     @Override
-    public BigInteger FreeMemory() {
+    public BigInteger FreePhysicalMemory() {
         return null;
     }
 
     @Override
-    public BigInteger TotalMemory() {
+    public BigInteger TotalPhysicalMemory() {
         return null;
     }
 }
