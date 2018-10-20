@@ -38,9 +38,9 @@ public class Constant {
             TotalPhysicalMemoryCmd = "cat /proc/meminfo | grep MemTotal: | awk '{print $2}'";
             TotalFreePhysicalMemoryCmd = "cat /proc/meminfo | grep MemFree: | awk '{print $2}'";
             SystemInformationCmd = "lscpu";
-            FreeCpuCmd = "top -n 1 | grep Cpu | awk '{print $8}'";
-            CpuUsedByUserCmd = "top -n 1 | grep Cpu | awk '{print $2}'";
-            CpuUsedBySystemCmd = "top -n 1 | grep Cpu | awk '{print $4}'";
+            FreeCpuCmd = "top -b -n 1 | grep Cpu | awk '{print $8}'";
+            CpuUsedByUserCmd = "top -b -n 1 | grep Cpu | awk '{print $2}'";
+            CpuUsedBySystemCmd = "top -b -n 1 | grep Cpu | awk '{print $4}'";
         }
     }
 
