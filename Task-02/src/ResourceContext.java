@@ -26,6 +26,19 @@ public class ResourceContext {
         return resourceContext.GetSystemInformation();
     }
 
+    public BigInteger TotalFreeCpu() {
+        return resourceContext.TotalFreeCpu();
+    }
+
+    public BigInteger CpuUsedByUser() {
+        return resourceContext.CpuUsedByUser();
+    }
+
+    public BigInteger CpuUsedBySystem() {
+        return resourceContext.CpuUsedBySystem();
+    }
+
+
 
     private  IResourceContext GetResourceContext() {
         if(Constant.IS_WINDOWS) {

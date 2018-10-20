@@ -7,4 +7,7 @@ public interface IResourceContext {
     BigInteger FreePhysicalMemory();
     BigInteger TotalPhysicalMemory();
     ArrayList<String>GetSystemInformation();
+    BigInteger TotalFreeCpu();
+    BigInteger CpuUsedByUser();
+    BigInteger CpuUsedBySystem();
 }

@@ -37,4 +37,19 @@ public class WindowsResourceContext implements IResourceContext {
         return result;
     }
 
+    @Override
+    public BigInteger TotalFreeCpu() {
+        return null;
+    }
+
+    @Override
+    public BigInteger CpuUsedByUser() {
+        return null;
+    }
+
+    @Override
+    public BigInteger CpuUsedBySystem() {
+        return null;
+    }
+
 }

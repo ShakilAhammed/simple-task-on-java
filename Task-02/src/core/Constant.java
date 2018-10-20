@@ -7,39 +7,64 @@ public class Constant {
 
     public final static boolean IS_MAC = OS_NAME.toLowerCase().contains("mac");
 
-    private static String TOTAL_PHYSICAL_MEMORY_CMD;
+    private static String TotalPhysicalMemoryCmd;
 
-    private static String TOTAL_FREE_PHYSICAL_MEMORY_CMD;
+    private static String TotalFreePhysicalMemoryCmd;
 
-    private static String SYSTEM_INFORMATION_CMD;
+    private static String SystemInformationCmd;
+
+    private static String FreeCpuCmd;
+
+    private static String CpuUsedByUserCmd;
+
+    private static String CpuUsedBySystemCmd;
 
     public static void SetUpConstant() {
         if(IS_WINDOWS) {
-            TOTAL_PHYSICAL_MEMORY_CMD = "wmic ComputerSystem get TotalPhysicalMemory";
-            TOTAL_FREE_PHYSICAL_MEMORY_CMD = "wmic OS get FreePhysicalMemory";
-            SYSTEM_INFORMATION_CMD = "systeminfo";
+            TotalPhysicalMemoryCmd = "wmic ComputerSystem get TotalPhysicalMemory";
+            TotalFreePhysicalMemoryCmd = "wmic OS get FreePhysicalMemory";
+            SystemInformationCmd = "systeminfo";
+
         }
         else if(IS_MAC) {
-            TOTAL_PHYSICAL_MEMORY_CMD = "sysctl -a | grep '^hw.memsize' | awk '{print $2}'";
-            TOTAL_FREE_PHYSICAL_MEMORY_CMD = "top -l 1 | grep PhysMem: | awk '{print $6}'";
-            SYSTEM_INFORMATION_CMD = "system_profiler SPHardwareDataType";
+            TotalPhysicalMemoryCmd = "sysctl -a | grep '^hw.memsize' | awk '{print $2}'";
+            TotalFreePhysicalMemoryCmd = "top -l 1 | grep PhysMem: | awk '{print $6}'";
+            SystemInformationCmd = "system_profiler SPHardwareDataType";
+            FreeCpuCmd = "top -l 1 | grep 'CPU usage': | awk '{print $7}'";
+            CpuUsedByUserCmd = "top -n 1 | grep Cpu | awk '{print $2}'";
+            CpuUsedBySystemCmd = "top -n 1 | grep Cpu | awk '{print $4}'";
         }
         else{
-            TOTAL_PHYSICAL_MEMORY_CMD = "cat /proc/meminfo | grep MemTotal: | awk '{print $2}'";
-            TOTAL_FREE_PHYSICAL_MEMORY_CMD = "cat /proc/meminfo | grep MemFree: | awk '{print $2}'";
-            SYSTEM_INFORMATION_CMD = "lscpu";
+            TotalPhysicalMemoryCmd = "cat /proc/meminfo | grep MemTotal: | awk '{print $2}'";
+            TotalFreePhysicalMemoryCmd = "cat /proc/meminfo | grep MemFree: | awk '{print $2}'";
+            SystemInformationCmd = "lscpu";
+            FreeCpuCmd = "top -n 1 | grep Cpu | awk '{print $8}'";
+            CpuUsedByUserCmd = "top -l 1 | grep 'CPU usage': | awk '{print $3}'";
+            CpuUsedBySystemCmd = "top -l 1 | grep 'CPU usage': | awk '{print $5}'";
         }
     }
 
     public static String getTotalPhysicalMemoryCmd() {
-        return TOTAL_PHYSICAL_MEMORY_CMD;
+        return TotalPhysicalMemoryCmd;
     }
 
     public static String getTotalFreePhysicalMemoryCmd() {
-        return TOTAL_FREE_PHYSICAL_MEMORY_CMD;
+        return TotalFreePhysicalMemoryCmd;
     }
 
     public static String getSystemInformationCmd() {
-        return SYSTEM_INFORMATION_CMD;
+        return SystemInformationCmd;
+    }
+
+    public static String getFreeCpuCmd() {
+        return FreeCpuCmd;
+    }
+
+    public static String getCpuUsedByUserCmd() {
+        return CpuUsedByUserCmd;
+    }
+
+    public static String getCpuUsedBySystemCmd() {
+        return CpuUsedBySystemCmd;
     }
 }
