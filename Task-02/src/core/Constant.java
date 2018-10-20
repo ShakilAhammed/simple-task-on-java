@@ -31,16 +31,16 @@ public class Constant {
             TotalFreePhysicalMemoryCmd = "memory_pressure | grep 'Pages free' | awk '{print $3}'";
             SystemInformationCmd = "system_profiler SPHardwareDataType";
             FreeCpuCmd = "top -l 1 | grep 'CPU usage': | awk '{print $7}'";
-            CpuUsedByUserCmd = "top -n 1 | grep Cpu | awk '{print $2}'";
-            CpuUsedBySystemCmd = "top -n 1 | grep Cpu | awk '{print $4}'";
+            CpuUsedByUserCmd = "top -l 1 | grep 'CPU usage': | awk '{print $5}'";
+            CpuUsedBySystemCmd = "top -l 1 | grep 'CPU usage': | awk '{print $3}'";
         }
         else{
             TotalPhysicalMemoryCmd = "cat /proc/meminfo | grep MemTotal: | awk '{print $2}'";
             TotalFreePhysicalMemoryCmd = "cat /proc/meminfo | grep MemFree: | awk '{print $2}'";
             SystemInformationCmd = "lscpu";
             FreeCpuCmd = "top -n 1 | grep Cpu | awk '{print $8}'";
-            CpuUsedByUserCmd = "top -l 1 | grep 'CPU usage': | awk '{print $3}'";
-            CpuUsedBySystemCmd = "top -l 1 | grep 'CPU usage': | awk '{print $5}'";
+            CpuUsedByUserCmd = "top -n 1 | grep Cpu | awk '{print $2}'";
+            CpuUsedBySystemCmd = "top -n 1 | grep Cpu | awk '{print $4}'";
         }
     }
 
