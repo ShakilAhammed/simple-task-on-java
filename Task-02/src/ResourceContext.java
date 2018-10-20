@@ -26,15 +26,15 @@ public class ResourceContext {
         return resourceContext.GetSystemInformation();
     }
 
-    public BigInteger TotalFreeCpu() {
+    public String TotalFreeCpu() {
         return resourceContext.TotalFreeCpu();
     }
 
-    public BigInteger CpuUsedByUser() {
+    public String CpuUsedByUser() {
         return resourceContext.CpuUsedByUser();
     }
 
-    public BigInteger CpuUsedBySystem() {
+    public String CpuUsedBySystem() {
         return resourceContext.CpuUsedBySystem();
     }
 

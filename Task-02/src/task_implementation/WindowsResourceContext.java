@@ -38,17 +38,17 @@ public class WindowsResourceContext implements IResourceContext {
     }
 
     @Override
-    public BigInteger TotalFreeCpu() {
+    public String TotalFreeCpu() {
         return null;
     }
 
     @Override
-    public BigInteger CpuUsedByUser() {
+    public String CpuUsedByUser() {
         return null;
     }
 
     @Override
-    public BigInteger CpuUsedBySystem() {
+    public String CpuUsedBySystem() {
         return null;
     }
 

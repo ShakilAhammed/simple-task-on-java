@@ -35,23 +35,23 @@ public class LinuxResourceContext implements IResourceContext {
     }
 
     @Override
-    public BigInteger TotalFreeCpu() {
+    public String TotalFreeCpu() {
         result.clear();
         result = ce.RunCommand("/bin/sh", "-c", Constant.getFreeCpuCmd());
-        return new BigInteger(result.get(0).trim());
+        return result.get(0).trim();
     }
 
     @Override
-    public BigInteger CpuUsedByUser() {
+    public String CpuUsedByUser() {
         result.clear();
         result = ce.RunCommand("/bin/sh", "-c", Constant.getCpuUsedByUserCmd());
-        return new BigInteger(result.get(0).trim());
+        return result.get(0).trim();
     }
 
     @Override
-    public BigInteger CpuUsedBySystem() {
+    public String CpuUsedBySystem() {
         result.clear();
         result = ce.RunCommand("/bin/sh", "-c", Constant.getCpuUsedBySystemCmd());
-        return new BigInteger(result.get(0).trim());
+        return result.get(0).trim();
     }
 }

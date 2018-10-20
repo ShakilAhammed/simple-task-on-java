@@ -28,7 +28,7 @@ public class Constant {
         }
         else if(IS_MAC) {
             TotalPhysicalMemoryCmd = "sysctl -a | grep '^hw.memsize' | awk '{print $2}'";
-            TotalFreePhysicalMemoryCmd = "top -l 1 | grep PhysMem: | awk '{print $6}'";
+            TotalFreePhysicalMemoryCmd = "memory_pressure | grep 'Pages free' | awk '{print $3}'";
             SystemInformationCmd = "system_profiler SPHardwareDataType";
             FreeCpuCmd = "top -l 1 | grep 'CPU usage': | awk '{print $7}'";
             CpuUsedByUserCmd = "top -n 1 | grep Cpu | awk '{print $2}'";
