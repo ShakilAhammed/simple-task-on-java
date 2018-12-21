@@ -39,7 +39,9 @@ public class WindowsResourceContext implements IResourceContext {
 
     @Override
     public String TotalFreeCpu() {
-        return null;
+        result.clear();
+        result = ce.RunCommand("powershell.exe","/c", Constant.getFreeCpuCmd());
+        return result.get(1);
     }
 
     @Override

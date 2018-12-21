@@ -1,3 +1,0 @@
-bottle==0.12.14
-Glances==3.0.2
-psutil==5.4.8

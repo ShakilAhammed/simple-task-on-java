@@ -24,6 +24,10 @@ public class Constant {
             TotalPhysicalMemoryCmd = "wmic ComputerSystem get TotalPhysicalMemory";
             TotalFreePhysicalMemoryCmd = "wmic OS get FreePhysicalMemory";
             SystemInformationCmd = "systeminfo";
+            FreeCpuCmd = "Get-Counter -Counter \"\\Processor(_Total)\\% Processor Time\"";
+//            CpuUsedByUserCmd = "top -l 1 | grep 'CPU usage': | awk '{print $5}'";
+//            CpuUsedBySystemCmd = "top -l 1 | grep 'CPU usage': | awk '{print $3}'";
+
 
         }
         else if(IS_MAC) {
